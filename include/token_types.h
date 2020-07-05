@@ -27,7 +27,7 @@ enum class TokenType
 [[maybe_unused]]
 inline static std::ostream& operator <<(std::ostream& out, const TokenType& token_type)
 {
-    const char* type_str
+    const char* token_type_str
     {
         token_type == TokenType::NUMBER                 ? "TokenType::NUMBER" :
         token_type == TokenType::WORD                   ? "TokenType::WORD" :
@@ -47,7 +47,7 @@ inline static std::ostream& operator <<(std::ostream& out, const TokenType& toke
         token_type == TokenType::END_OF_FILE            ? "TokenType::SUBEXPR_END" :
                                                           "UNKNOWN"
     };
-    return (out << type_str);
+    return (out << token_type_str);
 }
 
 #endif // TOKEN_TYPES_H
