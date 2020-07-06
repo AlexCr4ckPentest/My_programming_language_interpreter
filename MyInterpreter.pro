@@ -4,13 +4,15 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp \
-        src/lexer.cpp \
-        src/parser.cpp \
-        src/token.cpp
+    main.cpp \
+    src/lexer.cpp \
+    src/parser.cpp \
+    src/token.cpp
 
 HEADERS += \
-    include/abstract_expression.h \
+    include/expressions/abstract_expression.h \
+    include/expressions/binary_expression.h \
+    include/expressions/number_expression.h \
     include/lexer.h \
     include/parser.h \
     include/token.h \
