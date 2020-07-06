@@ -3,7 +3,7 @@
 #include <memory>
 
 #include "token.h"
-#include "abstract_expression.h"
+#include "expressions/abstract_expression.h"
 
 #ifndef PARSER_H
 #define PARSER_H
@@ -14,6 +14,8 @@ public:
     inline explicit Parser(const std::vector<Token>& tokens_list) noexcept
         : m_tokens_list {tokens_list}
     {}
+
+    void parse() noexcept;
 
 private:
     const std::vector<Token> m_tokens_list {};
