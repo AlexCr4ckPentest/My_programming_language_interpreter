@@ -8,9 +8,6 @@ enum class TokenType
     NUMBER,
     WORD,
     VARIABLE,
-    PREPROCESSOR_COMMAND,
-    PREPROCESSOR_VALUE,
-    PREPROCESSOR_NAME,
 
     OPERATOR_ADD,
     OPERATOR_SUB,
@@ -32,9 +29,6 @@ inline static std::ostream& operator <<(std::ostream& out, const TokenType& toke
         token_type == TokenType::NUMBER                 ? "TokenType::NUMBER" :
         token_type == TokenType::WORD                   ? "TokenType::WORD" :
         token_type == TokenType::VARIABLE               ? "TokenType::VARIABLE" :
-        token_type == TokenType::PREPROCESSOR_COMMAND   ? "TokenType::PREPROCESSOR_COMMAND" :
-        token_type == TokenType::PREPROCESSOR_VALUE     ? "TokenType::PREPROCESSOR_VALUE" :
-        token_type == TokenType::PREPROCESSOR_NAME      ? "TokenType::PREPROCESSOR_NAME" :
 
         token_type == TokenType::OPERATOR_ADD           ? "TokenType::OPERATOR_ADD" :
         token_type == TokenType::OPERATOR_SUB           ? "TokenType::OPERATOR_SUB" :
