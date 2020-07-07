@@ -13,6 +13,7 @@ HEADERS += \
     include/expressions/abstract_expression.h \
     include/expressions/binary_expression.h \
     include/expressions/number_expression.h \
+    include/expressions/unary_expression.h \
     include/lexer.h \
     include/parser.h \
     include/token.h \
