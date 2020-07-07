@@ -2,18 +2,22 @@
 #include <string>
 
 #include "include/lexer.h"
+#include "include/parser.h"
 
 int main()
 {
-    const std::string test_expr {"Test 1.2 + 2.33 - 3.444 * 4.5555 / 5.66666"};
+    const std::string test_expr1 {"2 + 2 * 2"};
 
-    Lexer lexer {test_expr};
+    Lexer lexer {test_expr1};
     auto tokens_list {lexer.Tokenize()};
 
-    std::cout << "Expression: " << test_expr << "\n";
+    Parser parser {tokens_list};
+    auto expressions {parser.parse()};
 
-    for (auto token : tokens_list) {
-        std::cout << token << "\n";
+    std::cout << "Expression: " << test_expr1 << "\n";
+
+    for (auto result : expressions) {
+        std::cout << "Result: " << result->eval() << "\n";
     }
 
     return 0;
