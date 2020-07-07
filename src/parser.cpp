@@ -1,5 +1,20 @@
 #include "../include/parser.h"
 
+#include <stdexcept>
+
+std::vector<std::shared_ptr<AbstractExpression> > Parser::parse() noexcept
+{
+    std::vector<std::shared_ptr<AbstractExpression> > ret {};
+
+    while (!match(TokenType::END_OF_FILE)) {
+        ret.emplace_back(expression());
+    }
+
+    return ret;
+}
+
+
+
 Token Parser::peek(const size_t at_index) const noexcept
 {
     const size_t position {m_current_position + at_index};
@@ -32,7 +47,7 @@ std::shared_ptr<AbstractExpression> Parser::primary()
     const Token current_token {peek(0)};
 
     if (match(TokenType::NUMBER)) {
-        return std::make_shared<AbstractExpression>(NumberExpression(std::stold(current_token.getData())));
+        return std::make_shared<NumberExpression>(std::stold(current_token.getData()));
     }
 
     throw std::runtime_error("Error: unknown token type!\n");
@@ -42,12 +57,9 @@ std::shared_ptr<AbstractExpression> Parser::primary()
 
 std::shared_ptr<AbstractExpression> Parser::unary()
 {
-    const Token current_token {peek(0)};
-
     if (match(TokenType::OPERATOR_SUB)) {
-        return std::make_shared<AbstractExpression>(NumberExpression{std::stold(current_token.getData())});
+        return std::make_shared<UnaryExpression>(primary(), '-');
     }
-
     return primary();
 }
 
@@ -55,15 +67,14 @@ std::shared_ptr<AbstractExpression> Parser::unary()
 
 std::shared_ptr<AbstractExpression> Parser::additive()
 {
-    std::shared_ptr<AbstractExpression> left_expr {multiplicative()};
-    std::shared_ptr<AbstractExpression> result {};
+    std::shared_ptr<AbstractExpression> result {multiplicative()};
 
     while (true) {
         if (match(TokenType::OPERATOR_ADD)) {
-            result = std::make_shared<AbstractExpression>(BinaryExpression(left_expr, multiplicative(), '+'));
+            result = std::make_shared<BinaryExpression>(result, multiplicative(), '+');
         }
         else if (match(TokenType::OPERATOR_SUB)) {
-            result = std::make_shared<AbstractExpression>(BinaryExpression(left_expr, multiplicative(), '-'));
+            result = std::make_shared<BinaryExpression>(result, multiplicative(), '-');
         }
         else {
             break;
@@ -77,15 +88,14 @@ std::shared_ptr<AbstractExpression> Parser::additive()
 
 std::shared_ptr<AbstractExpression> Parser::multiplicative()
 {
-    std::shared_ptr<AbstractExpression> left_expr {unary()};
-    std::shared_ptr<AbstractExpression> result {};
+    std::shared_ptr<AbstractExpression> result {unary()};
 
     while (true) {
         if (match(TokenType::OPERATOR_MUL)) {
-            result = std::make_shared<AbstractExpression>(BinaryExpression(left_expr, unary(), '*'));
+            result = std::make_shared<BinaryExpression>(result, unary(), '*');
         }
         else if (match(TokenType::OPERATOR_DIV)) {
-            result = std::make_shared<AbstractExpression>(BinaryExpression(left_expr, unary(), '/'));
+            result = std::make_shared<BinaryExpression>(result, unary(), '/');
         }
         else {
             break;

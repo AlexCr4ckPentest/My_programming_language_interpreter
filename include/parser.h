@@ -1,13 +1,12 @@
 #include <vector>
-#include <stack>
 #include <memory>
-#include <stdexcept>
 
 #include "token.h"
 
 #include "expressions/abstract_expression.h"
 #include "expressions/number_expression.h"
 #include "expressions/binary_expression.h"
+#include "expressions/unary_expression.h"
 
 #ifndef PARSER_H
 #define PARSER_H
@@ -46,7 +45,6 @@ private:
     const Token EOF_token {TokenType::END_OF_FILE};
 
     const std::vector<Token> m_tokens_list {};
-    std::stack<std::shared_ptr<AbstractExpression> > m_expression_ptrs {};
     size_t m_current_position {};
 };
 
