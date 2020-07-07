@@ -1,5 +1,6 @@
 #include "../include/parser.h"
 
+#include <string>
 #include <stdexcept>
 
 std::vector<std::shared_ptr<AbstractExpression> > Parser::parse() noexcept
@@ -50,7 +51,7 @@ std::shared_ptr<AbstractExpression> Parser::primary()
         return std::make_shared<NumberExpression>(std::stold(current_token.getData()));
     }
 
-    throw std::runtime_error("Error: unknown token type!\n");
+    throw std::runtime_error("Error: unknown token: " + current_token.toString());
 }
 
 
