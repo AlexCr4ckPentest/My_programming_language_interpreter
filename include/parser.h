@@ -11,6 +11,11 @@
 #ifndef PARSER_H
 #define PARSER_H
 
+using AbstractExpression    = Expressions::AbstractExpression;
+using NumberExpression      = Expressions::NumberExpression;
+using UnaryExpression       = Expressions::UnaryExpression;
+using BinaryExpression      = Expressions::BinaryExpression;
+
 class Parser
 {
 public:
