@@ -6,8 +6,7 @@ CONFIG -= qt
 SOURCES += \
     main.cpp \
     src/lexer.cpp \
-    src/parser.cpp \
-    src/token.cpp
+    src/parser.cpp
 
 HEADERS += \
     include/expressions/abstract_expression.h \
