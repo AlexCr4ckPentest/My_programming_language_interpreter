@@ -1,3 +1,3 @@
 # My_programming_language_interpreter
 
-Lexer --->> (tokens) --->> Parser --->> (AST) --->> Interpreter --->> <output>
+Program source --> (text) --> Lexer --> (tokens) --> Parser --> (AST + data) --> Interpreter --> (output)
