@@ -15,7 +15,7 @@ public:
         : m_input_data {input_data}
     {}
 
-    Lexer(const Lexer&) = delete ;
+    Lexer(const Lexer&) = delete;
     Lexer& operator=(const Lexer&) = delete;
 
     std::vector<Token> Tokenize() noexcept;
