@@ -11,6 +11,8 @@ inline static constexpr TokenType operator_token_types[]
 
 static const std::vector<TokenChar> operator_characters {'+', '-', '*', '/', '='};
 
+
+
 std::vector<Token> Lexer::Tokenize() noexcept
 {
     TokenChar current_char {};
@@ -37,6 +39,8 @@ std::vector<Token> Lexer::Tokenize() noexcept
     return m_tokens_list;
 }
 
+
+
 TokenChar Lexer::peek(const size_t at_index) const noexcept
 {
     const size_t position {m_current_position + at_index};
@@ -47,6 +51,8 @@ TokenChar Lexer::peek(const size_t at_index) const noexcept
 
     return m_input_data.at(position);
 }
+
+
 
 void Lexer::tokenizeNumber() noexcept
 {
@@ -61,6 +67,8 @@ void Lexer::tokenizeNumber() noexcept
     addToken(TokenType::NUMBER, token_data);
 }
 
+
+
 void Lexer::tokenizeWord() noexcept
 {
     TokenChar current_char {peek(0)};
@@ -73,6 +81,8 @@ void Lexer::tokenizeWord() noexcept
 
     addToken(TokenType::WORD, token_data);
 }
+
+
 
 void Lexer::tokenizeOperator() noexcept
 {
