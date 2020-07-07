@@ -10,7 +10,7 @@
 class Token
 {
 public:
-    Token(const TokenType type, const std::string_view data) noexcept;
+    Token(const TokenType type, const std::string_view data = {}) noexcept;
 
     Token& operator=(const Token&) = delete;
 
