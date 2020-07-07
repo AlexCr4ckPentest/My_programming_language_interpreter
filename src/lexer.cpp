@@ -15,7 +15,7 @@ std::vector<Token> Lexer::Tokenize() noexcept
 {
     TokenChar current_char {};
 
-    while (m_current_position < static_cast<uint32_t>(m_input_data.size())) {
+    while (m_current_position < static_cast<size_t>(m_input_data.size())) {
         current_char = peek(0);
         if (current_char.isNumber()) {
             tokenizeNumber();
@@ -37,11 +37,11 @@ std::vector<Token> Lexer::Tokenize() noexcept
     return m_tokens_list;
 }
 
-TokenChar Lexer::peek(const uint32_t at_index) const noexcept
+TokenChar Lexer::peek(const size_t at_index) const noexcept
 {
-    const uint32_t position {m_current_position + at_index};
+    const size_t position {m_current_position + at_index};
 
-    if (position >= static_cast<uint32_t>(m_input_data.size())) {
+    if (position >= static_cast<size_t>(m_input_data.size())) {
         return '\0';
     }
 

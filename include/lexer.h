@@ -23,12 +23,12 @@ public:
 private:
     const std::string m_input_data {};
     std::vector<Token> m_tokens_list {};
-    uint32_t m_current_position {};
+    size_t m_current_position {};
 
     inline void addToken(const TokenType token_type, const std::string_view token_data = {}) noexcept
     { m_tokens_list.emplace_back(token_type, token_data); }
 
-    TokenChar peek(const uint32_t at_index) const noexcept;
+    TokenChar peek(const size_t at_index) const noexcept;
 
     inline TokenChar nextCharacter() noexcept
     {
