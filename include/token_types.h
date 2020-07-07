@@ -5,20 +5,20 @@
 
 enum class TokenType
 {
-    NUMBER,
-    WORD,
-    VARIABLE,
+    NUMBER, // 12345
+    WORD, // Some_word123
+    VARIABLE, // $VAR
 
-    OPERATOR_ADD,
-    OPERATOR_SUB,
-    OPERATOR_MUL,
-    OPERATOR_DIV,
-    OPERATOR_ASSIG,
+    OPERATOR_ADD, // +
+    OPERATOR_SUB, // -
+    OPERATOR_MUL, // *
+    OPERATOR_DIV, // /
+    OPERATOR_ASSIG, // =
 
-    SUBEXPR_BEGIN,
-    SUBEXPR_END,
+    SUBEXPR_BEGIN, // (
+    SUBEXPR_END, // )
 
-    END_OF_FILE
+    END_OF_FILE // end
 };
 
 [[maybe_unused]]
