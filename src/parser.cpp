@@ -4,13 +4,13 @@
 
 std::vector<std::shared_ptr<AbstractExpression> > Parser::parse() noexcept
 {
-    std::vector<std::shared_ptr<AbstractExpression> > ret {};
+    std::vector<std::shared_ptr<AbstractExpression> > expression_ptrs_list {};
 
     while (!match(TokenType::END_OF_FILE)) {
-        ret.emplace_back(expression());
+        expression_ptrs_list.emplace_back(expression());
     }
 
-    return ret;
+    return expression_ptrs_list;
 }
 
 

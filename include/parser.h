@@ -43,7 +43,6 @@ public:
 
 private:
     const Token EOF_token {TokenType::END_OF_FILE};
-
     const std::vector<Token> m_tokens_list {};
     size_t m_current_position {};
 };
