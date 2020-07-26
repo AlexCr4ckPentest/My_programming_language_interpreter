@@ -11,7 +11,7 @@
 class Lexer
 {
 public:
-    inline explicit Lexer(const std::string_view input_data) noexcept
+    explicit Lexer(const std::string_view input_data) noexcept
         : m_input_data {input_data}
     {}
 
