@@ -11,7 +11,7 @@
 class Token
 {
 public:
-    inline Token(const TokenType token_type, const std::string_view token_data = {}) noexcept
+    Token(const TokenType token_type, const std::string_view token_data = {}) noexcept
         : m_token_type {token_type}
         , m_token_data {token_data}
     {}
