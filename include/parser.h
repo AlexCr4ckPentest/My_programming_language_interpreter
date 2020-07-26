@@ -14,7 +14,7 @@
 class Parser
 {
 public:
-    inline explicit Parser(const std::vector<Token>& tokens_list) noexcept
+    explicit Parser(const std::vector<Token>& tokens_list) noexcept
         : m_tokens_list {tokens_list}
     {}
 
