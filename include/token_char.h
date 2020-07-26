@@ -4,11 +4,11 @@
 class TokenChar
 {
 public:
-    inline TokenChar() noexcept
+    TokenChar() noexcept
         : m_character {}
     {}
 
-    inline TokenChar(const char character) noexcept
+    TokenChar(const char character) noexcept
         : m_character {character}
     {}
 
@@ -21,7 +21,7 @@ public:
     inline bool isLetter() const noexcept
     { return ((m_character >= 'A' && m_character <= 'z') && (m_character >= 'a' || m_character <= 'Z')); }
 
-    bool isLetterOrNumber() const noexcept
+    inline bool isLetterOrNumber() const noexcept
     { return (isLetter() || isNumber()); }
 
     inline bool operator ==(const char character) const noexcept
